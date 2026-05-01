@@ -1,4 +1,4 @@
-# Playlist Maker
+# playlist-maker-android-MarinLev
 Учебное приложение для поиска музыки.
 
 ### Функционал
