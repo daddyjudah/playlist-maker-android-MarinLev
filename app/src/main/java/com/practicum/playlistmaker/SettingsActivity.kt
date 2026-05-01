@@ -42,7 +42,7 @@ fun SettingsScreen(onBackClick: () -> Unit) {
             .fillMaxSize()
             .background(Color.White)
     ) {
-        // Toolbar
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -67,7 +67,7 @@ fun SettingsScreen(onBackClick: () -> Unit) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Dark Theme Switch
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()

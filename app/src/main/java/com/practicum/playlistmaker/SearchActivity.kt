@@ -45,7 +45,7 @@ fun SearchScreen(onBackClick: () -> Unit) {
             .fillMaxSize()
             .background(Color.White)
     ) {
-        // Toolbar
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -68,7 +68,6 @@ fun SearchScreen(onBackClick: () -> Unit) {
             )
         }
 
-        // Поле ввода поиска
         TextField(
             value = searchText,
             onValueChange = { searchText = it },
