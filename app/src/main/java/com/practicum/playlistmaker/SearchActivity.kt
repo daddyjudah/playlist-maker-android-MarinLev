@@ -1,8 +1,5 @@
 package com.practicum.playlistmaker
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,21 +17,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardCapitalization
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
-class SearchActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            MaterialTheme {
-                SearchScreen(onBackClick = { finish() })
-            }
-        }
-    }
-}
 
 @Composable
 fun SearchScreen(onBackClick: () -> Unit) {
@@ -45,7 +29,6 @@ fun SearchScreen(onBackClick: () -> Unit) {
             .fillMaxSize()
             .background(Color.White)
     ) {
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -73,8 +56,7 @@ fun SearchScreen(onBackClick: () -> Unit) {
             onValueChange = { searchText = it },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
-                .heightIn(min = 52.dp),
+                .padding(16.dp),
             placeholder = {
                 Text(
                     text = stringResource(R.string.search_placeholder),
@@ -85,8 +67,7 @@ fun SearchScreen(onBackClick: () -> Unit) {
                 Icon(
                     imageVector = Icons.Default.Search,
                     contentDescription = null,
-                    tint = Color(0xFFAEAFB4),
-                    modifier = Modifier.size(20.dp)
+                    tint = Color(0xFFAEAFB4)
                 )
             },
             trailingIcon = {
@@ -102,16 +83,10 @@ fun SearchScreen(onBackClick: () -> Unit) {
             },
             singleLine = true,
             shape = RoundedCornerShape(8.dp),
-            keyboardOptions = KeyboardOptions(
-                capitalization = KeyboardCapitalization.Sentences,
-                autoCorrect = true,
-                keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Search
-            ),
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = Color(0xFFF0F0F0),
                 unfocusedContainerColor = Color(0xFFF0F0F0),
-                disabledContainerColor = Color(0xFFF0F0F0),
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 cursorColor = Color(0xFF3772E7)

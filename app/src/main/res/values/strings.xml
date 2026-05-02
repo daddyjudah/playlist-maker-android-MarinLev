@@ -11,8 +11,15 @@
     <string name="search_placeholder">Поиск</string>
     <string name="clear_button">Очистить</string>
 
+    <string name="settings_title">Настройки</string>
     <string name="settings_dark_theme">Темная тема</string>
     <string name="settings_share">Поделиться приложением</string>
     <string name="settings_support">Написать в поддержку</string>
     <string name="settings_agreement">Пользовательское соглашение</string>
+
+    <string name="share_message">https://practicum.yandex.ru/android-developer/</string>
+    <string name="support_email">your-email@example.com</string>
+    <string name="support_subject">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
+    <string name="support_body">Спасибо разработчикам и разработчицам за крутое приложение!</string>
+    <string name="agreement_link">https://yandex.ru/legal/practicum_offer/</string>
 </resources>

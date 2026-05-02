@@ -1,5 +1,7 @@
 package com.practicum.playlistmaker
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -35,6 +38,7 @@ class SettingsActivity : ComponentActivity() {
 
 @Composable
 fun SettingsScreen(onBackClick: () -> Unit) {
+    val context = LocalContext.current
     var isDarkTheme by remember { mutableStateOf(false) }
 
     Column(
@@ -42,7 +46,6 @@ fun SettingsScreen(onBackClick: () -> Unit) {
             .fillMaxSize()
             .background(Color.White)
     ) {
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -57,7 +60,7 @@ fun SettingsScreen(onBackClick: () -> Unit) {
                 )
             }
             Text(
-                text = stringResource(R.string.menu_settings),
+                text = stringResource(R.string.settings_title),
                 fontSize = 22.sp,
                 fontWeight = FontWeight.Medium,
                 color = Color.Black,
@@ -66,7 +69,6 @@ fun SettingsScreen(onBackClick: () -> Unit) {
         }
 
         Spacer(modifier = Modifier.height(16.dp))
-
 
         Row(
             modifier = Modifier
@@ -79,29 +81,48 @@ fun SettingsScreen(onBackClick: () -> Unit) {
             Switch(
                 checked = isDarkTheme,
                 onCheckedChange = { isDarkTheme = it },
-                colors = SwitchDefaults.colors(
-                    checkedThumbColor = Color(0xFF3772E7),
-                    checkedTrackColor = Color(0xFF3772E7).copy(alpha = 0.5f)
-                )
+                colors = SwitchDefaults.colors(checkedThumbColor = Color(0xFF3772E7))
             )
         }
 
+        val shareMessage = stringResource(R.string.share_message)
         SettingsItem(
             text = stringResource(R.string.settings_share),
             icon = Icons.Default.Share,
-            onClick = { /* Реализация позже */ }
+            onClick = {
+                val intent = Intent(Intent.ACTION_SEND).apply {
+                    type = "text/plain"
+                    putExtra(Intent.EXTRA_TEXT, shareMessage)
+                }
+                context.startActivity(Intent.createChooser(intent, null))
+            }
         )
 
+        val supportEmail = stringResource(R.string.support_email)
+        val supportSubject = stringResource(R.string.support_subject)
+        val supportBody = stringResource(R.string.support_body)
         SettingsItem(
             text = stringResource(R.string.settings_support),
             icon = Icons.Default.Email,
-            onClick = { /* Реализация позже */ }
+            onClick = {
+                val intent = Intent(Intent.ACTION_SENDTO).apply {
+                    data = Uri.parse("mailto:")
+                    putExtra(Intent.EXTRA_EMAIL, arrayOf(supportEmail))
+                    putExtra(Intent.EXTRA_SUBJECT, supportSubject)
+                    putExtra(Intent.EXTRA_TEXT, supportBody)
+                }
+                context.startActivity(intent)
+            }
         )
 
+        val agreementLink = stringResource(R.string.agreement_link)
         SettingsItem(
             text = stringResource(R.string.settings_agreement),
             icon = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-            onClick = { /* Реализация позже */ }
+            onClick = {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(agreementLink))
+                context.startActivity(intent)
+            }
         )
     }
 }
