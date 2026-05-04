@@ -20,9 +20,8 @@
 ### Функционал
 - Поиск треков.
 - Настройки приложения.
-- История поиска.
 
 ### Стек
-- Kotlin, Jetpack Compose, Coroutines, Flow.
+- Kotlin, Jetpack Compose, Flow.
 - Clean Architecture, MVVM.
 - Navigation Compose.

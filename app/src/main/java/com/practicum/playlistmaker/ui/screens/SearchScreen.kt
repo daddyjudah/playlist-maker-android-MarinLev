@@ -5,22 +5,18 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.automirrored.filled.*
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.*
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.*
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.domain.models.Track
@@ -42,7 +38,6 @@ fun SearchScreen(
             .background(Color.White)
             .statusBarsPadding()
     ) {
-        // Шапка с кнопкой назад и заголовком
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -65,7 +60,6 @@ fun SearchScreen(
             )
         }
 
-        // Поле поиска (серый фон, закругление, крестик)
         TextField(
             value = text,
             onValueChange = {
@@ -110,9 +104,7 @@ fun SearchScreen(
 
         Box(modifier = Modifier.fillMaxSize()) {
             when (val state = screenState) {
-                is SearchState.Initial -> {
-                    // Пустое состояние
-                }
+                is SearchState.Initial -> { }
 
                 is SearchState.Searching -> {
                     CircularProgressIndicator(
