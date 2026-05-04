@@ -2,8 +2,6 @@ package com.practicum.playlistmaker.ui.models
 
 import com.practicum.playlistmaker.domain.models.Track
 
-// Модель трека для UI (если отличается от Domain, но тут они похожи)
-// Обычно в UI используют свои модели, но оставим как в задании
 data class TrackUIModel(
     val id: String,
     val name: String,

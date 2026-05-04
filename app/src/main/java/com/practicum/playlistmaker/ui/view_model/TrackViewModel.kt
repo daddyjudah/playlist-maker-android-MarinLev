@@ -1,17 +1,12 @@
 package com.practicum.playlistmaker.ui.view_model
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.practicum.playlistmaker.creator.Creator
-import com.practicum.playlistmaker.domain.api.TrackPlayer
-import com.practicum.playlistmaker.domain.api.TracksInteractor
-import com.practicum.playlistmaker.ui.models.PlayerStatus
-import com.practicum.playlistmaker.ui.models.TrackScreenState
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import com.practicum.playlistmaker.domain.api.*
+import com.practicum.playlistmaker.ui.models.*
+import kotlinx.coroutines.flow.*
 
 class TrackViewModel(
     private val trackId: String,
