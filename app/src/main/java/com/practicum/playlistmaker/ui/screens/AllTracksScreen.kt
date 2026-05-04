@@ -29,7 +29,7 @@ fun AllTracksScreen(
         contentAlignment = Alignment.Center
     ) {
         when (val currentState = state) {
-            is SearchState.Loading -> {
+            is SearchState.Searching -> {
                 CircularProgressIndicator(color = Color(0xFF3772E7))
             }
 
@@ -54,7 +54,7 @@ fun AllTracksScreen(
                 }
             }
 
-            is SearchState.Error -> {
+            is SearchState.Fail -> {
                 Text(
                     text = currentState.error,
                     textAlign = TextAlign.Center,
