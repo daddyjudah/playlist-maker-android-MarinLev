@@ -20,11 +20,11 @@ class AllTracksViewModel(
     fun fetchData() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                _allTracksScreenState.update { SearchState.Loading }
+                _allTracksScreenState.update { SearchState.Searching }
                 val list = tracksRepository.searchTracks("")
                 _allTracksScreenState.update { SearchState.Success(foundList = list) }
             } catch (e: IOException) {
-                _allTracksScreenState.update { SearchState.Error(e.message.toString()) }
+                _allTracksScreenState.update { SearchState.Fail(e.message.toString()) }
             }
         }
     }
